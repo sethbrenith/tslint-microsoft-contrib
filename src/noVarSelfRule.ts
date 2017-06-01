@@ -113,7 +113,7 @@ class NoVarSelfFixer extends Lint.SyntaxWalker {
         const previousToken = getPreviousToken(variableStatement);
         const nextToken = getNextToken(variableStatement);
         if (previousToken && previousToken.kind === ts.SyntaxKind.OpenBraceToken && nextToken) {
-            const matches = nextToken.getFullText().match(/^(\s*?)\r?\n\S/);
+            const matches = nextToken.getFullText().match(/^(\s*?)\r?\n[ \t]*\S/);
             if (matches && matches[1]) {
                 removalWidth += matches[1].length;
             }
